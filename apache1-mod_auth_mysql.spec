@@ -1,5 +1,5 @@
 %define		mod_name	auth_mysql
-%define		apxs		/usr/sbin/apxs
+%define		apxs		/usr/sbin/apxs1
 Summary:	This is the MySQL authentication module for Apache
 Summary(cs):	Základní autentizace pro WWW server Apache pomocí MySQL
 Summary(da):	Autenticering for webtjeneren Apache fra en MySQL-database
@@ -12,24 +12,24 @@ Summary(nb):	Autentisering for webtjeneren Apache fra en MySQL-database
 Summary(pl):	Modu³ uwierzytelnienia MySQL dla Apache
 Summary(pt_BR):	Autenticação via MySQL para o Apache
 Summary(sv):	Grundläggande autenticering för webbservern Apache med en MySQL-databas
-Name:		apache-mod_%{mod_name}
-Version:	2.20a
-Release:	5
+Name:		apache1-mod_%{mod_name}
+Version:	2.20
+Release:	1
 License:	GPL
 Group:		Networking/Daemons
-Source0:	http://web.oyvax.com/src/mod_auth_mysql-%{version}.tar.gz
-# Source0-md5:	49ca2a43f04939d31512616437f4fbb3
+Source0:	http://www.diegonet.com/support/mod_auth_mysql-%{version}.tar.gz
+# Source0-md5:	3e88c23aabf2089fc753b2631a938f53
 URL:		http://www.diegonet.com/support/mod_auth_mysql.shtml
-BuildRequires:	apache(EAPI)-devel
+BuildRequires:	apache1-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	mysql-devel
 BuildRequires:	%{apxs}
 Requires(post,preun):	%{_sbindir}/apxs
-Requires:	apache(EAPI)
-Requires:	apache-mod_auth
+Requires:	apache1
+Requires:	apache1-mod_auth
+Obsoletes:	apache-mod_%{mod_name} <= %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-Obsoletes:	mod_auth_mysql
 
 %define		_pkglibdir	%(%{apxs} -q LIBEXECDIR)
 
@@ -102,15 +102,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %{apxs} -e -a -n %{mod_name} %{_pkglibdir}/mod_%{mod_name}.so 1>&2
-if [ -f /var/lock/subsys/httpd ]; then
-	/etc/rc.d/init.d/httpd restart 1>&2
+if [ -f /var/lock/subsys/apache ]; then
+	/etc/rc.d/init.d/apache restart 1>&2
 fi
 
 %preun
 if [ "$1" = "0" ]; then
 	%{apxs} -e -A -n %{mod_name} %{_pkglibdir}/mod_%{mod_name}.so 1>&2
-	if [ -f /var/lock/subsys/httpd ]; then
-		/etc/rc.d/init.d/httpd restart 1>&2
+	if [ -f /var/lock/subsys/apache ]; then
+		/etc/rc.d/init.d/apache restart 1>&2
 	fi
 fi
 
