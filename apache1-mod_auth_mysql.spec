@@ -1,5 +1,3 @@
-# TODO
-# - doesn't build
 %define		mod_name	auth_mysql
 %define		apxs		/usr/sbin/apxs1
 Summary:	This is the MySQL authentication module for Apache
@@ -16,11 +14,12 @@ Summary(pt_BR):	Autenticação via MySQL para o Apache
 Summary(sv):	Grundläggande autenticering för webbservern Apache med en MySQL-databas
 Name:		apache1-mod_%{mod_name}
 Version:	2.20
-Release:	1.1
+Release:	1.2
 License:	GPL
 Group:		Networking/Daemons
 Source0:	http://www.diegonet.com/support/mod_auth_mysql-%{version}.tar.gz
 # Source0-md5:	3e88c23aabf2089fc753b2631a938f53
+Patch0:		%{name}-mysql-API.patch
 URL:		http://www.diegonet.com/support/mod_auth_mysql.shtml
 BuildRequires:	apache1-devel >= 1.3.33-2
 BuildRequires:	autoconf
@@ -83,6 +82,7 @@ MySQL-databas.
 
 %prep
 %setup -q -n mod_%{mod_name}-%{version}
+%patch0 -p1
 
 %build
 %{__aclocal}
