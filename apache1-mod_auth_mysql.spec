@@ -35,7 +35,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This is an authentication module for Apache that allows you to
-authenticate HTTP clients using mysql RDBMS.
+authenticate HTTP clients using MySQL RDBMS.
 
 %description -l cs
 Balíèek mod_auth_mysql slou¾í pro omezení pøístupu k dokumentùm, které
@@ -68,7 +68,7 @@ mod_auth_mysql ¤Ï¡¢MySQL ¥Ç¡¼¥¿¥Ù¡¼¥¹¤Î¥Ç¡¼¥¿¤ò¥Á¥§¥Ã¥¯¤¹¤ë¤³¤È
 
 %description -l pl
 To jest modu³ uwierzytelnienia dla Apache pozwalaj±cy na
-uwierzytelnianie klientów HTTP z u¿yciem bazy danych mysql.
+uwierzytelnianie klientów HTTP z u¿yciem bazy danych MySQL.
 
 %description -l pt_BR
 Com o mod_auth_mysql você pode fazer autenticação no Apache usando o
