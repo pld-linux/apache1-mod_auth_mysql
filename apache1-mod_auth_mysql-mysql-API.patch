@@ -1,0 +1,11 @@
+--- ./mod_auth_mysql.c~	1998-10-03 20:41:41.000000000 +0300
++++ ./mod_auth_mysql.c	2005-02-10 20:40:34.000000000 +0200
+@@ -372,7 +372,7 @@
+ 	}
+ 	if (name != NULL) {			/* open an SQL link */
+ 		/* link to the MySQL database and register its cleanup!@$ */
+-		mysql_auth = mysql_connect(&auth_sql_server, auth_db_host, user, pwd);
++		mysql_auth = mysql_real_connect(&auth_sql_server, auth_db_host, user, pwd, NULL, MYSQL_PORT, NULL, 0);
+ 		if (sec->non_persistent && mysql_auth) {
+ 			note_cleanups_for_mysql_auth(r->pool, mysql_auth);
+ 		}
