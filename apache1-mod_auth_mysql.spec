@@ -14,7 +14,7 @@ Summary(pt_BR):	Autenticação via MySQL para o Apache
 Summary(sv):	Grundläggande autenticering för webbservern Apache med en MySQL-databas
 Name:		apache1-mod_%{mod_name}
 Version:	2.20
-Release:	1.2
+Release:	1.3
 License:	GPL
 Group:		Networking/Daemons
 Source0:	http://www.diegonet.com/support/mod_auth_mysql-%{version}.tar.gz
@@ -111,7 +111,7 @@ if [ -f /var/lock/subsys/apache ]; then
 	/etc/rc.d/init.d/apache restart 1>&2
 fi
 
-%preun
+%postun
 if [ "$1" = "0" ]; then
 	if [ -f /var/lock/subsys/apache ]; then
 		/etc/rc.d/init.d/apache restart 1>&2
