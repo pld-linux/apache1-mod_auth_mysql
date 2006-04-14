@@ -29,7 +29,7 @@ BuildRequires:	mysql-devel
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires:	apache1 >= 1.3.33-2
 Requires:	apache1-mod_auth
-Obsoletes:	apache-mod_auth_mysql <= %{version}
+Obsoletes:	apache-mod_auth_mysql <= 2.20
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_pkglibdir	%(%{apxs} -q LIBEXECDIR 2>/dev/null)
