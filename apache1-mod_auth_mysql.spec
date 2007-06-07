@@ -21,7 +21,7 @@ Source0:	http://www.diegonet.com/support/mod_auth_mysql-%{version}.tar.gz
 # Source0-md5:	3e88c23aabf2089fc753b2631a938f53
 Patch0:		%{name}-mysql-API.patch
 URL:		http://www.diegonet.com/support/mod_auth_mysql.shtml
-BuildRequires:	%{apxs}
+BuildRequires:	apache1-apxs
 BuildRequires:	apache1-devel >= 1.3.33-2
 BuildRequires:	autoconf
 BuildRequires:	automake
