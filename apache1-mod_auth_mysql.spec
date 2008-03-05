@@ -14,7 +14,7 @@ Summary(pt_BR.UTF-8):	Autenticação via MySQL para o Apache
 Summary(sv.UTF-8):	Grundläggande autenticering för webbservern Apache med en MySQL-databas
 Name:		apache1-mod_%{mod_name}
 Version:	2.20
-Release:	1.3
+Release:	1.4
 License:	GPL
 Group:		Networking/Daemons
 Source0:	http://www.diegonet.com/support/mod_auth_mysql-%{version}.tar.gz
@@ -26,7 +26,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	mysql-devel
 BuildRequires:	rpmbuild(macros) >= 1.268
-Requires:	apache1 >= 1.3.33-2
+Requires:	apache1(EAPI)
 Requires:	apache1-mod_auth
 Obsoletes:	apache-mod_auth_mysql <= 2.20
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
